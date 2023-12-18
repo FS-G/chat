@@ -30,7 +30,11 @@ const apiKey = process.env.OPENAI_API_KEY; // Replace with your actual OpenAI AP
 const text = fs.readFileSync('./aws_svs.txt', 'utf8');
 const textSplitter = new RecursiveCharacterTextSplitter({ chunkSize: 1000 });
 
-(async () => {
+(
+  
+
+  
+  async () => {
   let docs;
   try {
     docs = await textSplitter.createDocuments([text]);
@@ -43,6 +47,13 @@ const textSplitter = new RecursiveCharacterTextSplitter({ chunkSize: 1000 });
   const vectorStoreRetriever = vectorStore.asRetriever();
   // let vectorStoreRetriever;/
   const model = new OpenAI({ apiKey });
+
+
+  app.use('/ping', (req, res) => {
+    // Send a successful response with status code 200 and "hello" as the body
+    res.status(200).send('hello');
+  })
+  
 
   // Define a route to handle queries
   app.post('/query', async (req, res) => {
