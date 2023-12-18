@@ -343,7 +343,6 @@ const { RetrievalQAChain } = require('langchain/chains');
 const { MemoryVectorStore } = require("langchain/vectorstores/memory");
 const { OpenAIEmbeddings } = require('langchain/embeddings/openai');
 const { RecursiveCharacterTextSplitter } = require('langchain/text_splitter');
-const fs = require('fs');
 const cors = require('cors');
 
 const app = express();
@@ -354,8 +353,7 @@ app.use('/', express.static(__dirname));
 const apiKey = process.env.OPENAI_API_KEY; // Replace with your actual OpenAI API key
 
 // Initialize LangChain components
-// const text = fs.readFileSync('./aws_svs.txt', 'utf8');
-console.log(text)
+
 const textSplitter = new RecursiveCharacterTextSplitter({ chunkSize: 1000 });
 
 (
@@ -396,7 +394,7 @@ const textSplitter = new RecursiveCharacterTextSplitter({ chunkSize: 1000 });
   });
 
   // Start the server
-  const port = 3001;
+  const port = 9001;
   const server = http.createServer(app);
   server.listen(port, () => console.log(`Server started on port localhost:${port}`));
 })();
