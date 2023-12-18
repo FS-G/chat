@@ -27,7 +27,7 @@ app.use('/', express.static(__dirname));
 const apiKey = process.env.OPENAI_API_KEY; // Replace with your actual OpenAI API key
 
 // Initialize LangChain components
-const text = fs.readFileSync('./aws_svs.txt', 'utf8');
+const text = fs.readFileSync('/assets/my-file.txt', 'utf8');
 const textSplitter = new RecursiveCharacterTextSplitter({ chunkSize: 1000 });
 
 (
